@@ -11,7 +11,7 @@ baseurl: ""
 social:
   name: Aung Kaung Moe
 
-theme_mode: dark
+theme_mode:
 toc: true
 paginate: 10
 

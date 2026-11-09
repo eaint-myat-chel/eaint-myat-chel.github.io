@@ -1,3 +1,9 @@
+<script>
+  if (window.Theme?.isToggleable && Theme.isSystemTheme) {
+    Theme.update(Theme.Mode.DARK);
+  }
+</script>
+
 {% if site.avatar == nil or site.avatar == empty %}
   <style>
     #sidebar #avatar {
