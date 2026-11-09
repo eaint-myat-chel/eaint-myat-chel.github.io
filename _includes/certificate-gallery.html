@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="{{ '/assets/css/certificates.css' | relative_url }}">
+<script type="module" src="{{ '/assets/js/certificates.js' | relative_url }}"></script>
+
+<div id="certificate-gallery">
+  <div class="certificate-filters" role="group" aria-label="Filter certificates by organization" hidden>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-issuer-filter="all" aria-pressed="true">All</button>
+    {% for group in site.data.certificates %}
+      <button type="button" class="btn btn-sm btn-outline-secondary" data-issuer-filter="{{ group.issuer | slugify }}" aria-pressed="false">{{ group.issuer | escape }}</button>
+    {% endfor %}
+  </div>
+
+  {% for group in site.data.certificates %}
+    <section data-issuer="{{ group.issuer | slugify }}" class="certificate-group">
+      <h2>{{ group.issuer | escape }}</h2>
+      <div class="certificate-grid">
+        {% for certificate in group.certificates %}
+          {% assign image = certificate.image | uri_escape | prepend: '/assets/img/certificates/' %}
+          <article class="certificate-card">
+            <img src="{{ image | relative_url }}" alt="{{ certificate.title | escape }} certificate preview">
+            <div class="certificate-details">
+              <h3>{{ certificate.title | escape }}</h3>
+              {% if certificate.detail %}
+                <p>{{ certificate.detail | escape }}</p>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>

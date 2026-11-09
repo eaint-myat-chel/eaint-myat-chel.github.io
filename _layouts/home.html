@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+{% include lang.html %}
+{% assign posts = paginator.posts | where_exp: 'post', 'post.hidden != true' %}
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  {% for post in posts %}
+    <article class="card-wrapper card">
+      <a href="{{ post.url | relative_url }}" class="post-preview row g-0">
+        <div class="col-12">
+          <div class="card-body">
+            <h1 class="card-title my-2 mt-md-0">{{ post.title | escape }}</h1>
+            <div class="card-text content mt-0 mb-3">
+              <p>{% include post-summary.html %}</p>
+            </div>
+
+            <div class="post-meta">
+              <i class="far fa-calendar fa-fw me-1" aria-hidden="true"></i>
+              {% include datetime.html date=post.date lang=lang %}
+              {% if post.categories.size > 0 %}
+                <i class="far fa-folder-open fa-fw ms-2 me-1" aria-hidden="true"></i>
+                <span class="categories">{{ post.categories | join: ', ' | escape }}</span>
+              {% endif %}
+              {% if post.tags.size > 0 %}
+                <i class="fas fa-tags fa-fw ms-2 me-1" aria-hidden="true"></i>
+                <span>{{ post.tags | join: ', ' | escape }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </a>
+    </article>
+  {% else %}
+    <p class="mt-4 text-muted">No posts yet.</p>
+  {% endfor %}
+</div>
+
+{% if paginator.total_pages > 1 %}
+  {% include post-paginator.html %}
+{% endif %}
