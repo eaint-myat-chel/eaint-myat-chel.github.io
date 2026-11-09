@@ -42,40 +42,24 @@
 
   <div class="sidebar-bottom d-flex flex-wrap align-items-center w-100">
     {% unless site.theme_mode == 'light' or site.theme_mode == 'dark' %}
-      {%- capture icon_light -%}
-        <i class="fa-regular fa-sun" data-theme-mode="light"></i>
-      {%- endcapture -%}
+      <button type="button" class="btn btn-link nav-link" aria-label="Dark mode" id="mode-toggle">
+        <i class="fa-regular fa-sun" data-theme-mode="light" aria-hidden="true"></i>
+        <i class="fa-regular fa-moon" data-theme-mode="dark" aria-hidden="true"></i>
+      </button>
+      {% comment %} Chirpy's page scripts expect a menu element beside the theme button. {% endcomment %}
+      <template class="dropdown-menu"></template>
+      <script>
+        (() => {
+          const button = document.getElementById('mode-toggle');
+          const syncPressedState = () => button.setAttribute('aria-pressed', String(Theme.isDark));
 
-      {%- capture icon_dark -%}
-        <i class="fa-regular fa-moon" data-theme-mode="dark"></i>
-      {%- endcapture -%}
-
-      <div class="btn-group dropup">
-        <button
-          type="button"
-          class="btn btn-link nav-link"
-          aria-label="Switch Mode"
-          id="mode-toggle"
-          data-bs-toggle="dropdown"
-        >
-          {{- icon_light -}}
-          {{- icon_dark -}}
-        </button>
-        <ul class="dropdown-menu rounded-3 mb-1 p-1">
-          <li>
-            <button class="dropdown-item d-flex align-items-center" type="button" data-theme-mode="light">
-              {{- icon_light -}}
-              {{- site.data.locales[lang].theme.light -}}
-            </button>
-          </li>
-          <li>
-            <button class="dropdown-item d-flex align-items-center" type="button" data-theme-mode="dark">
-              {{- icon_dark -}}
-              {{- site.data.locales[lang].theme.dark -}}
-            </button>
-          </li>
-        </ul>
-      </div>
+          syncPressedState();
+          button.addEventListener('click', () => {
+            Theme.update(Theme.isDark ? Theme.Mode.LIGHT : Theme.Mode.DARK);
+            syncPressedState();
+          });
+        })();
+      </script>
 
       {% if site.data.contact.size > 0 %}
         <span class="icon-border"></span>

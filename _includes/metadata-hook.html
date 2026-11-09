@@ -4,10 +4,28 @@
   }
 </script>
 
-{% if site.avatar == nil or site.avatar == empty %}
-  <style>
+<style>
+  {% if site.avatar == nil or site.avatar == empty %}
     #sidebar #avatar {
       display: none;
     }
-  </style>
-{% endif %}
+  {% endif %}
+
+  {% if page.layout == 'home' %}
+    @media (min-width: 992px) {
+      #topbar-wrapper {
+        height: 4rem;
+      }
+    }
+  {% else %}
+    /* Chirpy's shared scripts still expect the search elements in the DOM. */
+    #search-trigger {
+      visibility: hidden;
+    }
+
+    #search,
+    #search-cancel {
+      display: none !important;
+    }
+  {% endif %}
+</style>
