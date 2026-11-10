@@ -59,12 +59,4 @@ problem-solving skills. Eager to gain practical experience and continue learning
     <i class="fa-solid fa-envelope about-contact-icon" aria-hidden="true"></i>
     <span class="about-contact-handle">aungkaungmoe@uit.edu.mm</span>
   </a>
-  <a href="https://github.com/Sahatah-Ashawka">
-    <i class="fa-brands fa-github about-contact-icon" aria-hidden="true"></i>
-    <span class="about-contact-handle">Sahatah-Ashawka</span>
-  </a>
-  <a href="https://tryhackme.com/p/KojiShuma">
-    <span class="about-contact-icon about-contact-tryhackme" aria-hidden="true"></span>
-    <span class="about-contact-handle">KojiShuma</span>
-  </a>
 </div>
