@@ -55,8 +55,5 @@ problem-solving skills. Eager to gain practical experience and continue learning
 ## Contact and profiles
 
 <div class="about-contact-links">
-  <a href="mailto:aungkaungmoe@uit.edu.mm">
-    <i class="fa-solid fa-envelope about-contact-icon" aria-hidden="true"></i>
-    <span class="about-contact-handle">aungkaungmoe@uit.edu.mm</span>
-  </a>
+  
 </div>
