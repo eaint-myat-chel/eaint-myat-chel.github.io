@@ -34,6 +34,6 @@ bundle exec htmlproofer _site --disable-external
 
 ## GitHub Pages
 
-Before pushing, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. Confirm **Custom domain** shows `aungkaungmoe.xyz`. GitHub Pages uses that setting for the domain when deploying with Actions.
+Before pushing, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. Confirm **Custom domain** shows ``. GitHub Pages uses that setting for the domain when deploying with Actions.
 
 The workflow builds and checks `_site/`, then deploys that folder on a push to `main` or a manual run on `main`.
